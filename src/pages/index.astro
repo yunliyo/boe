@@ -1,11 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer';
+import Links from '../components/Links';
 ---
 
 <Layout title="犹为君">
   <h1>犹为君</h1>
   <p>让我们生活的世界充满诗意。</p>
+  <div class="links-block" slot="default">
+    <Links client:load />
+  </div>
 </Layout>
+
+<div class="links-fixed">
+  <Links client:load />
+</div>
 
 <Footer client:load />

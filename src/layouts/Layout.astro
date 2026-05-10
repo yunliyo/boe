@@ -21,13 +21,16 @@ const { title, description = "让我们生活的世界充满诗意。" } = Astro
     <main>
       <slot />
     </main>
+    <div class="links-fixed">
+      <slot name="links" />
+    </div>
   </body>
 </html>
 
 <style is:global>
   * {
     background: -webkit-linear-gradient(to right, #8d4bbb, #934491);
-    background: linear-gradient(to right, #8d4bbb, #934491);*
+    background: linear-gradient(to right, #8d4bbb, #934491);
     box-sizing: border-box;
   }
 
@@ -60,7 +63,7 @@ const { title, description = "让我们生活的世界充满诗意。" } = Astro
     margin-bottom: 1em;
   }
 
-  a,a:hover {
+  a, a:hover {
     color: #FFFFFF;
     text-decoration: underline;
   }
@@ -68,5 +71,60 @@ const { title, description = "让我们生活的世界充满诗意。" } = Astro
   footer {
     color: #FFFFFF;
     text-align: right;
+  }
+
+  .links-fixed {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .links-fixed {
+      display: flex;
+      gap: 30px;
+      position: fixed;
+      left: 15px;
+      bottom: 15px;
+      z-index: 100;
+    }
+
+    .links-fixed a {
+      text-decoration: none;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    .links-fixed a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      text-decoration: none;
+    }
+  }
+
+  .links-block {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin: 10px 5px;
+    padding: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .links-block {
+      display: none;
+    }
+  }
+
+  .links-block a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+
+  .links-block a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
   }
 </style>
